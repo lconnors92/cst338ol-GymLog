@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
@@ -22,7 +21,7 @@ import java.util.concurrent.Executors;
 @Database(entities = {GymLog.class}, version = 1, exportSchema = false)
 public abstract class GymLogDatabase extends RoomDatabase {
 
-    private static final String DATABASE_NAME = "gymLogDatabase";
+    private static final String DATABASE_NAME = "GymLog_database";
     public static final String GYM_LOG_TABLE = "gymLogTable";
 
     private static volatile GymLogDatabase INSTANCE;
@@ -34,7 +33,7 @@ public abstract class GymLogDatabase extends RoomDatabase {
         if (INSTANCE == null) {
             synchronized (GymLogDatabase.class) {
                 if (INSTANCE == null) {
-                    Room.databaseBuilder(
+                    INSTANCE = Room.databaseBuilder(
                                     context.getApplicationContext(),
                                     GymLogDatabase.class,
                                     DATABASE_NAME
