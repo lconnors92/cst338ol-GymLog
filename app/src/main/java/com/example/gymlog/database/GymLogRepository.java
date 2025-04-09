@@ -18,6 +18,7 @@ public class GymLogRepository {
     private ArrayList<GymLog> allLogs;
 
     private static GymLogRepository repository;
+
     private GymLogRepository(Application application) {
         GymLogDatabase db = GymLogDatabase.getDatabase(application);
         this.gymLogDAO = db.gymLogDAO();
@@ -54,25 +55,41 @@ public class GymLogRepository {
                     }
                 }
         );
-        try{
+        try {
             return future.get();
-        } catch (InterruptedException | ExecutionException e){
+        } catch (InterruptedException | ExecutionException e) {
             Log.i(MainActivity.TAG, "Problem when getting all GymLogs in the repository");
         }
         return null;
     }
 
     public void insertGymLog(GymLog gymLog) {
-        GymLogDatabase.databaseWriteExecutor.execute(()->
+        GymLogDatabase.databaseWriteExecutor.execute(() ->
         {
             gymLogDAO.insert(gymLog);
         });
     }
 
     public void insertUser(User... user) {
-        GymLogDatabase.databaseWriteExecutor.execute(()->
+        GymLogDatabase.databaseWriteExecutor.execute(() ->
         {
             userDAO.insert(user);
         });
+    }
+
+    public User getUserByUserName(String username) {
+        Future<User> future = GymLogDatabase.databaseWriteExecutor.submit(
+                new Callable<User>() {
+                    @Override
+                    public User call() throws Exception {
+                        return userDAO.getUserByUserName(username);
+                    }
+                });
+        try {
+            future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            Log.i(MainActivity.TAG, "Problems when getting user by username");
+        }
+        return null;
     }
 }
