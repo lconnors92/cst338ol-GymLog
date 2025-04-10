@@ -9,10 +9,9 @@
 
     <TextView
         android:id="@+id/titleLoginTextView"
-        android:layout_width="match_parent"
-        android:layout_height="155dip"
-        android:layout_margin="16dip"
-        android:layout_marginBottom="24dp"
+        android:layout_width="391dp"
+        android:layout_height="162dp"
+        android:layout_marginTop="208dp"
         android:gravity="center"
         android:text="@string/login_welcome"
         android:textSize="42sp"
@@ -54,6 +53,7 @@
         android:layout_margin="16dp"
         android:text="@string/login"
         android:textSize="32sp"
+        android:background="@color/bratGreen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordLoginEditText" />

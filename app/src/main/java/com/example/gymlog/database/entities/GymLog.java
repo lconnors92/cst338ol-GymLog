@@ -34,7 +34,7 @@ public class GymLog {
                 "weight:" + weight + '\n' +
                 "reps:" + reps + '\n' +
                 "date:" + date.toString() + '\n' +
-                "=-=-=-=-=-=\n";
+                "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=";
     }
 
     public int getId() {
