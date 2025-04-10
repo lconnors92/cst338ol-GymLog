@@ -31,9 +31,9 @@ public class GymLog {
     @Override
     public String toString() {
         return exercise + '\n' +
-                "weight:" + weight + '\n' +
-                "reps:" + reps + '\n' +
-                "date:" + date.toString() + '\n' +
+                "Weight: " + weight + '\n' +
+                "Reps: " + reps + '\n' +
+                "Date: " + date.toString() + '\n' +
                 "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=";
     }
 

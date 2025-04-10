@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
     String mExercise = "";
     double mWeight = 0;
     int mReps = 0;
-    //TODO add login information.
     private int loggedInUserId = -1;
     private User user;
 
@@ -79,9 +78,7 @@ public class MainActivity extends AppCompatActivity {
         }
         updateSharedPreference();
 
-        //todo remove
-        //binding.logDisplayTextView.setMovementMethod(new ScrollingMovementMethod());
-        //updateDisplay();
+
 
         binding.logButton.setOnClickListener(new View.OnClickListener() {
 
@@ -89,18 +86,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 getInformationFromDisplay();
                 insertGymLogRecord();
-                //todo remove
-                //updateDisplay();
             }
         });
-
-//        binding.exerciseInputEditText.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //todo remove
-//                //updateDisplay();
-//            }
-//        });
 
     }
 
@@ -218,18 +205,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Deprecated
-    private void updateDisplay() {
-        ArrayList<GymLog> allLogs = repository.getAllLogsByUserId(loggedInUserId);
-        if (allLogs.isEmpty()) {
-            //binding.logDisplayTextView.setText(R.string.nothing_to_show_time_to_hit_the_gym);
-        }
-        StringBuilder sb = new StringBuilder();
-        for (GymLog log : allLogs) {
-            sb.append(log);
-        }
-        //binding.logDisplayTextView.setText(sb.toString());
-    }
+
 
     private void getInformationFromDisplay() {
         mExercise = binding.exerciseInputEditText.getText().toString();
